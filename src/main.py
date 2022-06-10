@@ -25,24 +25,16 @@ def value_check():
 
 @app.get('/game-duration')
 def extract_game_duration():
-  # base_folder_path = 'D:\output\game\\info'
-
   base_game_overview_path = os.path.join("D:", os.sep, "output", "game", "info", "NA1_*.json")
-
-  # print('check: ', base_game_overview_path)
 
   file_paths = glob(base_game_overview_path)
   game_durations = []
 
   for file_path in tqdm(file_paths):
-    # print('file_path: ', file_path)
-
     json_data = None
 
     with open(file_path , 'r') as json_file:
       json_data = json.load(json_file)
-
-    # print(json_data)
 
     game_durations.append(
       {
@@ -52,7 +44,6 @@ def extract_game_duration():
     )
 
   return game_durations
-
 
 
 '''
@@ -65,9 +56,3 @@ type uvicorn main:app --reload
   "Hello": "World"
 }
 '''
-
-
-
-
-# if __name__ == '__main__':
-#   mo.fetch_game_duration
